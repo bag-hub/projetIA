@@ -1,1 +1,78 @@
-Choix de classe :Automobile, Cat, Dog, Horse, Ship
+                                            RAPPORT DE FIN DE PROJET IA
+
+Sujet : Classification d'images CIFAR-10
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+INTRODUCTION
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+L’objectif de ce projet est de construire un système de classification d’images basé sur un sous‑ensemble de cinq classes du jeu de données CIFAR‑10.
+Nous avons suivi une démarche complète : 
+    * Préparation des données, 
+    * Extraction de caractéristiques,
+    * Construction de pipelines, 
+    * Entraînement de plusieurs modèles, 
+    * Analyse des erreurs,
+    * Amélioration du modèle principal (MLP).
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+1) Préparation des données
+
+    -Sélection de 5 classes parmi CIFAR‑10 (Automobile, Cat, Dog, Horse, Ship)
+    -Construction d’un DataFrame regroupant les images, leurs labels et les caractéristiques extraites.
+    -Séparation du jeu de données en train et test.
+    -Visualisation de quelques images pour vérifier la cohérence des classes.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+2) Extraction des caractéristiques
+Nous avons extrait deux types de caractéristiques simples :
+
+    -Caractéristiques de couleur : moyennes des canaux R, G et B.
+    -Caractéristiques morphologiques : mesures basées sur la forme .
+Ces caractéristiques ont été combinées pour former un vecteur final utilisé par les modèles.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+3) Modèles entraînés
+Nous avons construit trois pipelines scikit‑learn :
+
+    -MLPClassifier
+    -SVM 
+    -Arbre de décision
+Chaque pipeline inclut une étape de normalisation via StandardScaler().
+Indication : Les modèles ont été entraînés sur F_train et évalués sur F_test.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+4) Evaluation et comparaison des modeles
+
+L’évaluation des différents modèles montre que leurs performances restent globalement modestes, 
+mais le MLP se distingue comme le plus efficace parmi les approches testées.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+5) Analyse des erreurs
+
+    -Plusieurs images sont mal classées, notamment entre classes visuellement proches.
+    -La matrice de confusion montre des confusions persistantes entre certaines catégories.
+    -Les caractéristiques simples (moyennes RGB + morphologie) ne capturent pas toute la complexité des images CIFAR‑10.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+6) Amelipration du modele
+
+Nous avons appliqué une recherche d’hyperparamètres sur le MLP via GridSearchCV :
+Hyperparamètres testés : hidden_layer_sizes; activation : relu, tanh ; Validation croisée
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+7) Comparaison avant/après amélioration (Phase 4)
+    
+    *Avant amelioration : 0.3995
+    *Après amelioration : 0.4045
+L’amélioration est faible (+0.005), mais réelle.
+Elle montre que le réglage des hyperparamètres influence la performance, même si les caractéristiques restent la principale limite.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+CONCLUSION :
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ce projet a permis de comprendre et de mettre en œuvre un pipeline complet de classification d’images, depuis l’extraction de caractéristiques 
+jusqu’à l’évaluation et l’amélioration des modèles.
+
+
+#...Réalisé Par GUEYE BAYE & N'TCHAM KOMINA ROGER.
